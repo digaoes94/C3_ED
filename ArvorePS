@@ -121,4 +121,22 @@ public class ArvorePS {
 		
 		return no;
 	}
+
+	public ItemPS[] CamCentral() {
+		int[] n = new int[1];
+		n[0] = 0;
+		ItemPS[] vet = new ItemPS[this.qtdNos];
+		
+		return (CamCentral(this.raiz, vet, n));
+	}
+	private ItemPS[] CamCentral(NoPS no, ItemPS[] vet, int[] n) {
+		if (no != null) {
+			vet = CamCentral(no.getEsq(), vet, n);
+			vet[n[0]] = no.getItemPS();
+			n[0]++;
+			vet = CamCentral(no.getDir(), vet, n);
+		}
+		
+		return vet;
+	}
 }
