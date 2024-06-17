@@ -34,4 +34,22 @@ public class ListaSTR {
 	public void setQtdNos(int qtdNos) {
 		this.qtdNos = qtdNos;
 	}
+
+	public boolean eVazia() {
+		return (this.prim == null);
+	}
+
+	public void inserir(ItemSTR item) {
+		NoSTR novoNo = new NoSTR(item);
+
+		if (this.eVazia()) {
+			this.prim = novoNo;
+		}
+		else {
+			this.ult.setProx(novoNo);
+		}
+
+		this.ult = novoNo;
+		this.qtdNos++;
+	}
 }
