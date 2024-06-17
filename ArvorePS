@@ -1,0 +1,78 @@
+package presidiario;
+
+import presidiario.ItemPS;
+import presidiario.NoPS;
+
+public class ArvorePS {
+	private NoPS raiz;
+	private int qtdNos;
+	
+	public ArvorePS() {
+		this.raiz = null;
+		this.qtdNos = 0;
+	}
+	
+	public boolean eVazia() {
+		return (this.raiz == null);
+	}
+	
+	public NoPS getRaiz() {
+		return this.raiz;
+	}
+	
+	public int getQtdNos() {
+		return this.qtdNos;
+	}
+	
+	public boolean inserir(ItemPS item) {
+		if (pesquisar(item.getCodigo())) {
+			return false;
+		}
+		else {
+			this.raiz = inserir(item, this.raiz);
+			this.qtdNos++;
+			return true;
+		}
+	}
+	public NoPS inserir(ItemPS item, NoPS no) {
+		if (no == null) {
+			NoPS novo = new NoPS(item);
+			return novo;
+		}
+		else {
+			if (item.getCodigo() < no.getItem().getCodigo()) {
+				no.setEsq(inserir(item, no.getEsq()));
+				return no;
+			}
+			else {
+				no.setDir(inserir(item, no.getDir()));
+				return no;
+			}
+		}
+	}
+	
+	public boolean pesquisar(int codigo) {
+		if (pesquisar(codigo, this.raiz) != null) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	private NoPS pesquisar(int codigo, NoPS no) {
+		if (no != null) {
+			if (codigo < no.getItem().getCodigo()) {
+				no = pesquisar(codigo, no.getEsq());
+			}
+			else {
+				if (codigo > no.getItem().getCodigo()) {
+					no = pesquisar(codigo, no.getDir());
+				}
+			}
+		}
+		
+		return no;
+	}
+	
+	
+}
