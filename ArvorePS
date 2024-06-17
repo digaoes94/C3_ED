@@ -157,4 +157,22 @@ public class ArvorePS {
 		
 	return vet;
 	}
+
+	public ItemPS[] CamPos() {
+		int[] n = new int[1];
+		n[0] = 0;
+		ItemPS[] vet = new Item[this.quantNos];
+		
+		return (CamPos(this.raiz, vet, n));
+	}
+	private ItemPS[] CamPos(NoPS no, ItemPS[] vet, int[] n){
+		if (no != null) {
+			vet = CamPos(no.getEsq(), vet, n);
+			vet = CamPos(no.getDir(), vet, n);
+			vet[n[0]] = no.getInfo();
+			n[0]++;
+		}
+		
+	return vet;
+	}
 }
