@@ -2,12 +2,13 @@ package presidiario;
 
 public class ItemPS {
 	private int codigo, idade;
-	private String nome;
+	private String nome, presidio;
 	
-	public ItemPS(int codigo, int idade, String nome) {
+	public ItemPS(int codigo, int idade, String nome, String presidio) {
 		this.codigo = codigo;
 		this.idade = idade;
 		this.nome = nome;
+		this.presidio = presidio;
 	}
 
 	public int getCodigo() {
@@ -29,5 +30,12 @@ public class ItemPS {
 	}
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+	
+	public String getPresidio() {
+		return presidio;
+	}
+	public void setPresidio(String presidio) {
+		this.presidio = presidio;
 	}
 }
