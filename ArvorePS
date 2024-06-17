@@ -74,5 +74,51 @@ public class ArvorePS {
 		return no;
 	}
 	
+	public boolean remover(int codigo) {
+		if (pesquisar(codigo, this.raiz) != null) {
+			this.raiz = remover(codigo, this.raiz);
+			this.qtdNos--;
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	public NoPS remover(int codigo, NoPS no) {
+		if (codigo < no.getItem().getCodigo()) {
+			no.setEsq(remover(codigo, no.getEsq()));
+		}
+		else {
+			if (codigo > no.getItem().getCodigo()) {
+				no.setDir(remover(codigo, no.getDir()));
+			}
+			else {
+				if (no.getDir() == null) {
+					return no.getEsq();
+				}
+				else {
+					if (no.getEsq() == null) {
+						return no.getDir();
+					}
+					else {
+						no.setEsq(Arrumar(no, no.getEsq()));
+					}
+				}
+			}
+		}
+		
+		return no;
+	}
 	
+	private NoPS Arrumar(NoPS no, NoPS maior) {
+		if (maior.getDir() != null) {
+			maior.setDir(Arrumar(no, maior.getDir()));
+		}
+		else {
+			no.setItem(maior.getItem());
+			maior = maior.getEsq();
+		}
+		
+		return no;
+	}
 }
