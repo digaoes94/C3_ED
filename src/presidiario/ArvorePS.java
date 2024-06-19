@@ -1,13 +1,13 @@
-package presidio;
+package presidiario;
 
-import presidio.ItemPR;
-import presidio.NoPR;
+import presidiario.ItemPS;
+import presidiario.NoPS;
 
-public class ArvorePR {
-	private NoPR raiz;
+public class ArvorePS {
+	private NoPS raiz;
 	private int qtdNos;
 	
-	public ArvorePR() {
+	public ArvorePS() {
 		this.raiz = null;
 		this.qtdNos = 0;
 	}
@@ -16,7 +16,7 @@ public class ArvorePR {
 		return (this.raiz == null);
 	}
 	
-	public NoPR getRaiz() {
+	public NoPS getRaiz() {
 		return this.raiz;
 	}
 	
@@ -24,7 +24,7 @@ public class ArvorePR {
 		return this.qtdNos;
 	}
 	
-	public boolean inserir(ItemPR item) {
+	public boolean inserir(ItemPS item) {
 		if (pesquisar(item.getCodigo())) {
 			return false;
 		}
@@ -34,9 +34,9 @@ public class ArvorePR {
 			return true;
 		}
 	}
-	public NoPR inserir(ItemPR item, NoPR no) {
+	public NoPS inserir(ItemPS item, NoPS no) {
 		if (no == null) {
-			NoPR novo = new NoPR(item);
+			NoPS novo = new NoPS(item);
 			return novo;
 		}
 		else {
@@ -59,7 +59,7 @@ public class ArvorePR {
 			return false;
 		}
 	}
-	private NoPR pesquisar(int codigo, NoPR no) {
+	private NoPS pesquisar(int codigo, NoPS no) {
 		if (no != null) {
 			if (codigo < no.getItem().getCodigo()) {
 				no = pesquisar(codigo, no.getEsq());
@@ -84,7 +84,7 @@ public class ArvorePR {
 			return false;
 		}
 	}
-	public NoPR remover(int codigo, NoPR no) {
+	public NoPS remover(int codigo, NoPS no) {
 		if (codigo < no.getItem().getCodigo()) {
 			no.setEsq(remover(codigo, no.getEsq()));
 		}
@@ -110,7 +110,7 @@ public class ArvorePR {
 		return no;
 	}
 	
-	private NoPR Arrumar(NoPR no, NoPR maior) {
+	private NoPS Arrumar(NoPS no, NoPS maior) {
 		if (maior.getDir() != null) {
 			maior.setDir(Arrumar(no, maior.getDir()));
 		}
@@ -122,17 +122,17 @@ public class ArvorePR {
 		return no;
 	}
 
-	public ItemPR[] CamCentral() {
+	public ItemPS[] CamCentral() {
 		int[] n = new int[1];
 		n[0] = 0;
-		ItemPR[] vet = new ItemPR[this.qtdNos];
+		ItemPS[] vet = new ItemPS[this.qtdNos];
 		
 		return (CamCentral(this.raiz, vet, n));
 	}
-	private ItemPR[] CamCentral(NoPR no, ItemPR[] vet, int[] n) {
+	private ItemPS[] CamCentral(NoPS no, ItemPS[] vet, int[] n) {
 		if (no != null) {
 			vet = CamCentral(no.getEsq(), vet, n);
-			vet[n[0]] = no.getItemPR();
+			vet[n[0]] = no.getItem();
 			n[0]++;
 			vet = CamCentral(no.getDir(), vet, n);
 		}
@@ -140,16 +140,16 @@ public class ArvorePR {
 		return vet;
 	}
 
-	public ItemPR[] CamPre() {
+	public ItemPS[] CamPre() {
 		int[] n = new int[1];
 		n[0] = 0;
-		ItemPR[] vet = new ItemPR[this.quantNos];
+		ItemPS[] vet = new ItemPS[this.qtdNos];
 		
 		return (CamPre(this.raiz, vet, n));
 	}
-	private ItemPR[] CamPre(NoPR no, ItemPR[] vet, int[] n) {
+	private ItemPS[] CamPre(NoPS no, ItemPS[] vet, int[] n) {
 		if (no != null) {
-			vet[n[0]] = no.getInfo();
+			vet[n[0]] = no.getItem();
 			n[0]++;
 			vet = CamPre(no.getEsq(), vet,n);
 			vet = CamPre(no.getDir(), vet,n);
@@ -158,18 +158,18 @@ public class ArvorePR {
 	return vet;
 	}
 
-	public ItemPR[] CamPos() {
+	public ItemPS[] CamPos() {
 		int[] n = new int[1];
 		n[0] = 0;
-		ItemPR[] vet = new Item[this.quantNos];
+		ItemPS[] vet = new ItemPS[this.qtdNos];
 		
 		return (CamPos(this.raiz, vet, n));
 	}
-	private ItemPR[] CamPos(NoPR no, ItemPR[] vet, int[] n){
+	private ItemPS[] CamPos(NoPS no, ItemPS[] vet, int[] n){
 		if (no != null) {
 			vet = CamPos(no.getEsq(), vet, n);
 			vet = CamPos(no.getDir(), vet, n);
-			vet[n[0]] = no.getInfo();
+			vet[n[0]] = no.getItem();
 			n[0]++;
 		}
 		

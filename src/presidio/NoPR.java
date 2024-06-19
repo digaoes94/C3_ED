@@ -1,4 +1,15 @@
+package presidio;
 
+import presidio.ItemPR;
+
+public class NoPR {
+	private ItemPR item;
+	private NoPR esq, dir;
+	
+	public NoPR(ItemPR item) {
+		this.item = item;
+		this.esq = null;
+		this.dir = null;
 	}
 
 	public ItemPR getItem() {
