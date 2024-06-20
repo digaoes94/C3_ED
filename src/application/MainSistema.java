@@ -14,13 +14,15 @@ public class MainSistema {
 		ArvorePS arvPS = new ArvorePS();
 		ArvorePR arvPR = new ArvorePR();
 		
+		System.out.println("Sistema de Prisões Estaduais");
+		
 		do {
 			run = Menu();
 		} while (run);
 	}
 	
-	public static Menu() {
-		
+	public static boolean Menu() {
+		int opcao;
 	}
 	
 	public static int codPS() {

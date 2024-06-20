@@ -2,6 +2,7 @@ package presidiario;
 
 import presidiario.ItemPS;
 import presidiario.NoPS;
+import auxiliary.*;
 
 public class ArvorePS {
 	private NoPS raiz;
@@ -175,4 +176,58 @@ public class ArvorePS {
 		
 	return vet;
 	}
+	
+	/*
+	public int ContarIdosos() {
+		int idosos = 0;
+		
+		if (this.raiz == null) {
+			return -1;
+		}
+		else {
+			idosos = ContarIdosos(this.raiz, idosos);
+		}
+		
+		return idosos;
+	}
+	private int ContarIdosos(NoPS no, int idosos) {
+		if (no != null) {
+			if (no.getItem().getIdade() >= 65) {
+				idosos++;
+			}
+			
+			idosos += ContarIdosos(no.getEsq(), idosos);
+			idosos += ContarIdosos(no.getDir(), idosos);
+		}
+		
+		return idosos;
+	}
+	*/
+	
+	/*
+	public String[] ListaPresos() {
+		String[] vetPS = new String[this.qtdNos];
+		String aux = "";
+		String aux2 = "";
+		
+		if (this.raiz == null) {
+			return null;
+		}
+		else {
+			aux = ListaPresos(this.raiz, aux2);
+			vetPS = aux2.split(",");
+			return vetPS;
+		}
+	}
+	private String ListaPresos(NoPS no, String aux2) {
+		if (no != null) {
+			aux2 += no.getItem().getNome() + ",";
+			
+			aux2 += ListaPresos(no.getEsq(), aux2);
+			aux2 += ListaPresos(no.getDir(), aux2);
+		}
+		
+		return aux2;
+	}
+	*/
 }
