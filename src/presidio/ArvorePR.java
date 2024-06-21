@@ -185,9 +185,11 @@ public class ArvorePR {
 		}
 		else {
 			lista = CidadePresidio(this.raiz, cidade, lista);
-			
-			for (int a = 0; a < lista.qtdNos; a++) {
-				
+
+			String[] vetPR = new String[lista.getQtdNos()];
+			NoSTR aux2 = lista.getPrim();
+			for (int a = 0; a < lista.getQtdNos(); a++) {
+				vetPR[a] = aux2.getItemSTR().get
 			}
 		}
 	}
