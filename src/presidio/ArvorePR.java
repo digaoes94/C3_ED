@@ -176,6 +176,7 @@ public class ArvorePR {
 	return vet;
 	}
 
+	/*
 	public String[] CidadePresidio(String cidade) {
 		ListaSTR lista = new ListaSTR();
 		String aux = "";
@@ -188,12 +189,31 @@ public class ArvorePR {
 
 			String[] vetPR = new String[lista.getQtdNos()];
 			NoSTR aux2 = lista.getPrim();
-			for (int a = 0; a < lista.getQtdNos(); a++) {
-				vetPR[a] = aux2.getItemSTR().get
+			int count = 0;
+
+			while (aux2 != null) {
+				vetPR[count] = aux2.getItemSTR().getPalavra();
+				aux2 = aux2.getProx();
+				count++;
 			}
+
+			return vetPR;
 		}
 	}
-	private ListaSTR CidadePresidio() {
-		
+ 	private ListaSTR CidadePresidio(NoPR no, String cidade, ListaSTR lista) {
+  		ListaSTR lista2 = new ListaSTR();
+    
+		if (no != null) {
+			if (no.getItem().getCidade() == cidade) {
+				lista.inserir(no.getItem().getNome());
+   			}
+
+      			lista2 = CidadePresidio(no.getEsq(), cidade, lista);
+	 		lista2 = CidadePresidio(no.getDir(), cidade, lista);
+  		}
+
+    		return lista;
 	}
+	*/
+	
 }
