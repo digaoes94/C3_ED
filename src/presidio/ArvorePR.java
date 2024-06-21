@@ -175,4 +175,23 @@ public class ArvorePR {
 		
 	return vet;
 	}
+
+	public String[] CidadePresidio(String cidade) {
+		ListaSTR lista = new ListaSTR();
+		String aux = "";
+
+		if (this.raiz == null) {
+			return null;
+		}
+		else {
+			lista = CidadePresidio(this.raiz, cidade, lista);
+			
+			for (int a = 0; a < lista.qtdNos; a++) {
+				
+			}
+		}
+	}
+	private ListaSTR CidadePresidio() {
+		
+	}
 }
