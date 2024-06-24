@@ -37,7 +37,7 @@ public class NoPS {
 	public String toString() {
 		String resumo = "";
 		
-		resumo += "Presidiário: " + this.item.getNome() + ". Idade: " + this.item.getIdade() + "./n";
+		resumo += "Presidiário: " + this.item.getNome() + ". Idade: " + this.item.getIdade() + ".\n";
 		resumo += "Código: " + this.item.getCodigo() + ". Presídio: " + this.item.getPresidio() + ".";
 		
 		return resumo;

@@ -37,7 +37,7 @@ public class NoPR {
 	public String toString() {
 		String resumo = "";
 		
-		resumo += "Presídio: " + this.item.getNome() + ". Código: " + this.item.getCodigo() + "./n";
+		resumo += "Presídio: " + this.item.getNome() + ". Código: " + this.item.getCodigo() + ".\n";
 		resumo += "Cidade: " + this.item.getCidade() + ".";
 		
 		return resumo;

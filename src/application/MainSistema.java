@@ -14,7 +14,7 @@ public class MainSistema {
 		ArvorePS arvPS = new ArvorePS();
 		ArvorePR arvPR = new ArvorePR();
 		
-		System.out.println("Sistema de Prisões Estaduais");
+		System.out.println("Sistema de Prisões Estaduais\n");
 		
 		do {
 			run = Menu(arvPS, arvPR);
@@ -128,12 +128,18 @@ public class MainSistema {
 				String[] listaPresos = arvPS.ListaPresos();
 				
 				for (String x : listaPresos) {
-					System.out.println(x + "/n");
+					System.out.println(x + ".\n");
 				}
 				return true;
 				
 			case 9:
+				System.out.println("Informe o nome da cidade:");
+				cidadePR = scan.nextLine();
+				String[] presidios = arvPR.CidadePresidio(cidadePR);
 				
+				for (String x : presidios) {
+					System.out.println(x + ".\n");
+				}
 				return true;
 				
 			default:
