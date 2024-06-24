@@ -25,7 +25,7 @@ public class ArvorePR {
 	}
 	
 	public boolean inserir(ItemPR item) {
-		if (pesquisar(item.getCodigo())) {
+		if (pesquisar(item.getCodigo()) != null) {
 			return false;
 		}
 		else {
@@ -51,12 +51,14 @@ public class ArvorePR {
 		}
 	}
 	
-	public boolean pesquisar(int codigo) {
-		if (pesquisar(codigo, this.raiz) != null) {
-			return true;
+	public NoPR pesquisar(int codigo) {
+		NoPR resultado = pesquisar(codigo, this.raiz);
+		
+		if (resultado != null) {
+			return resultado;
 		}
 		else {
-			return false;
+			return null;
 		}
 	}
 	private NoPR pesquisar(int codigo, NoPR no) {
@@ -176,7 +178,6 @@ public class ArvorePR {
 	return vet;
 	}
 
-	/*
 	public String[] CidadePresidio(String cidade) {
 		ListaSTR lista = new ListaSTR();
 		String aux = "";
@@ -214,6 +215,4 @@ public class ArvorePR {
 
     		return lista;
 	}
-	*/
-	
 }

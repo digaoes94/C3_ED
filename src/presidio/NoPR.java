@@ -32,4 +32,14 @@ public class NoPR {
 	public void setDir(NoPR dir) {
 		this.dir = dir;
 	}
+	
+	@Override
+	public String toString() {
+		String resumo = "";
+		
+		resumo += "Presídio: " + this.item.getNome() + ". Código: " + this.item.getCodigo() + "./n";
+		resumo += "Cidade: " + this.item.getCidade() + ".";
+		
+		return resumo;
+	}
 }

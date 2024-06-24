@@ -32,4 +32,14 @@ public class NoPS {
 	public void setDir(NoPS dir) {
 		this.dir = dir;
 	}
+	
+	@Override
+	public String toString() {
+		String resumo = "";
+		
+		resumo += "Presidiário: " + this.item.getNome() + ". Idade: " + this.item.getIdade() + "./n";
+		resumo += "Código: " + this.item.getCodigo() + ". Presídio: " + this.item.getPresidio() + ".";
+		
+		return resumo;
+	}
 }

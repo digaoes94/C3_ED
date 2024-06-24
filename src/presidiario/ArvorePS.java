@@ -26,7 +26,7 @@ public class ArvorePS {
 	}
 	
 	public boolean inserir(ItemPS item) {
-		if (pesquisar(item.getCodigo())) {
+		if (pesquisar(item.getCodigo()) != null) {
 			return false;
 		}
 		else {
@@ -52,12 +52,14 @@ public class ArvorePS {
 		}
 	}
 	
-	public boolean pesquisar(int codigo) {
-		if (pesquisar(codigo, this.raiz) != null) {
-			return true;
+	public NoPS pesquisar(int codigo) {
+		NoPS resultado = pesquisar(codigo, this.raiz);
+		
+		if (resultado != null) {
+			return resultado;
 		}
 		else {
-			return false;
+			return null;
 		}
 	}
 	private NoPS pesquisar(int codigo, NoPS no) {
@@ -177,7 +179,6 @@ public class ArvorePS {
 	return vet;
 	}
 	
-	/*
 	public int ContarIdosos() {
 		int idosos = 0;
 		
@@ -202,9 +203,7 @@ public class ArvorePS {
 		
 		return idosos;
 	}
-	*/
 	
-	/*
 	public String[] ListaPresos() {
 		String[] vetPS = new String[this.qtdNos];
 		String aux = "";
@@ -229,5 +228,4 @@ public class ArvorePS {
 		
 		return aux2;
 	}
-	*/
 }
