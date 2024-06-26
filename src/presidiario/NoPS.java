@@ -1,7 +1,5 @@
 package presidiario;
 
-import presidiario.ItemPS;
-
 public class NoPS {
 	private ItemPS item;
 	private NoPS esq, dir;

@@ -1,8 +1,5 @@
 package presidio;
 
-import presidio.ItemPR;
-import presidio.NoPR;
-
 public class ArvorePR {
 	private NoPR raiz;
 	private int qtdNos;
@@ -197,6 +194,32 @@ public class ArvorePR {
 
 			aux += CidadePresidio(no.getEsq(), cidade);
 			aux += CidadePresidio(no.getDir(), cidade);
+  		}
+		
+		String[] resultado = aux.split(",");
+
+    	return resultado;
+	}
+ 	
+ 	public String[] PresidioNivel(NivelSEG nivel) {
+		if (this.raiz == null) {
+			return null;
+		}
+		else {
+			String[] resultado = PresidioNivel(this.raiz, nivel);
+			return resultado;
+		}
+	}
+ 	private String[] PresidioNivel(NoPR no, NivelSEG nivel) {
+ 		String aux = "";
+    
+		if (no != null) {
+			if (no.getItem().getNivel() == nivel) {
+				aux += no.getItem().getNome() + ",";
+   			}
+
+			aux += PresidioNivel(no.getEsq(), nivel);
+			aux += PresidioNivel(no.getDir(), nivel);
   		}
 		
 		String[] resultado = aux.split(",");

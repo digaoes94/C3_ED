@@ -1,9 +1,5 @@
 package presidiario;
 
-import presidiario.ItemPS;
-import presidiario.NoPS;
-import auxiliary.*;
-
 public class ArvorePS {
 	private NoPS raiz;
 	private int qtdNos;
@@ -214,7 +210,7 @@ public class ArvorePS {
 		}
 		else {
 			aux = ListaPresos(this.raiz, aux2);
-			vetPS = aux2.split(",");
+			vetPS = aux.split(",");
 			return vetPS;
 		}
 	}

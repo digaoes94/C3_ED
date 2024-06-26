@@ -3,11 +3,13 @@ package presidio;
 public class ItemPR {
 	private int codigo;
 	private String nome, cidade;
+	private NivelSEG nivel;
 	
-	public ItemPR(int codigo, String nome, String cidade) {
+	public ItemPR(int codigo, String nome, String cidade, NivelSEG nivel) {
 		this.codigo = codigo;
 		this.nome = nome;
 		this.cidade = cidade;
+		this.nivel = nivel;
 	}
 
 	public int getCodigo() {
@@ -29,5 +31,12 @@ public class ItemPR {
 	}
 	public void setCidade(String cidade) {
 		this.cidade = cidade;
+	}
+
+	public NivelSEG getNivel() {
+		return nivel;
+	}
+	public void setNivel(NivelSEG nivel) {
+		this.nivel = nivel;
 	}
 }

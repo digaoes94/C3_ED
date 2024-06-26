@@ -1,7 +1,5 @@
 package auxiliary;
 
-import auxiliary.ItemSTR;
-
 public class NoSTR {
 	private ItemSTR item;
 	private NoSTR prox;

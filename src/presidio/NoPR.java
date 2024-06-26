@@ -1,7 +1,5 @@
 package presidio;
 
-import presidio.ItemPR;
-
 public class NoPR {
 	private ItemPR item;
 	private NoPR esq, dir;

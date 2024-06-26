@@ -1,8 +1,5 @@
 package auxiliary;
 
-import auxiliary.ItemSTR;
-import auxiliary.NoSTR;
-
 public class ListaSTR {
 	private NoSTR prim;
 	private NoSTR ult;
