@@ -29,7 +29,7 @@ public class MainSistema {
 	
 	public static boolean Menu(ArvorePS arvPS, ArvorePR arvPR) {
 		//  System.out.println("");
-		int opcao, codigoPS, codigoPR, idadePS;
+		int opcao, codigoPS, codigoPR, idadePS, idosos;
 		String nomePS, nomePR, cidadePR, quebra, nivelPR;
 		String[] presidios;
 		NoPS noPS;
@@ -60,16 +60,16 @@ public class MainSistema {
 			switch (opcao) {
 			case 1:
 				codigoPS = codPS();
-				System.out.println("\nInforme nome do presidiário:");
+				System.out.print("\nInforme nome do presidiário: ");
 				nomePS = scan.nextLine();
-				System.out.println("Informe idade do presidiário:");
+				System.out.print("Informe idade do presidiário: ");
 				idadePS = scan.nextInt();
 				quebra = scan.nextLine();
-				System.out.println("Informe em qual presídio será alocado:");
+				System.out.print("Informe em qual presídio será alocado: ");
 				nomePR = scan.nextLine();
 				
 				if (arvPS.inserir(new ItemPS(codigoPS, idadePS, nomePS, nomePR))) {
-					System.out.println("\nPresidiário registrado.");
+					System.out.println("\nPresidiário registrado. Código: " + codigoPS + ".");
 				}
 				else {
 					System.out.println("\nPresidiário não registrado.");
@@ -78,52 +78,54 @@ public class MainSistema {
 				
 			case 2:
 				codigoPR = codPR();
-				System.out.println("\nInforme nome do presídio:");
+				System.out.print("\nInforme nome do presídio: ");
 				nomePR = scan.nextLine();
-				System.out.println("Informe a cidade do presídio:");
+				System.out.print("Informe a cidade do presídio: ");
 				cidadePR = scan.nextLine();
 				
-				System.out.println("Informe o nível de segurança do presídio:");				
+				System.out.println("\nInforme o nível de segurança do presídio:");				
 				System.out.println("OBS: MI para Mínima, MO para Moderada, MA para Máxima.");
 				nivelPR = scan.nextLine();
-				if (nivelPR == "MI") {
+				
+				switch (nivelPR) {
+				case "MI":
 					nivel = NivelSEG.MÍNIMA;
-				}
-				else if (nivelPR == "MO") {
+					break;
+				case "MO":
 					nivel = NivelSEG.MODERADA;
-				}
-				else if (nivelPR == "MA") {
+					break;
+				case "MA":
 					nivel = NivelSEG.MÁXIMA;
-				}
-				else {
+					break;
+				default:
 					System.out.println("Opção inválida, o programa retornará ao menu.");
 					return true;
 				}
 				
 				if (arvPR.inserir(new ItemPR(codigoPR, nomePR, cidadePR, nivel))) {
-					System.out.println("Presídio registrado.");
+					System.out.println("\nPresídio registrado. Código: " + codigoPR + ".");
 				}
 				else {
-					System.out.println("Presídio não registrado.");
+					System.out.println("\nPresídio não registrado.");
 				}			
 				return true;
 				
 			case 3:
-				System.out.println("\nInforme o código do presidiário:");
+				System.out.print("\nInforme o código do presidiário: ");
 				codigoPS = scan.nextInt();
 				noPS = arvPS.pesquisar(codigoPS);
 				System.out.println(noPS.toString());
 				return true;
 				
 			case 4:
-				System.out.println("\nInforme o código do presídio:");
+				System.out.print("\nInforme o código do presídio: ");
 				codigoPR = scan.nextInt();
 				noPR = arvPR.pesquisar(codigoPR);
 				System.out.println(noPR.toString());
 				return true;
 				
 			case 5:
-				System.out.println("\nInforme o código do presidiário:");
+				System.out.print("\nInforme o código do presidiário: ");
 				codigoPS = scan.nextInt();
 				resultado = arvPS.remover(codigoPS);
 				
@@ -136,7 +138,7 @@ public class MainSistema {
 				return true;
 				
 			case 6:
-				System.out.println("\nInforme o código do presídio:");
+				System.out.print("\nInforme o código do presídio: ");
 				codigoPR = scan.nextInt();
 				resultado = arvPR.remover(codigoPR);
 				
@@ -149,25 +151,39 @@ public class MainSistema {
 				return true;
 				
 			case 7:
-				System.out.println("\nA quantidade de presidiários idosos é " + arvPS.ContarIdosos() + ".");
+				idosos = arvPS.ContarIdosos()[0];
+				
+				if (idosos == -1) {
+					System.out.println("Não foram encontrados presidiários idosos.");
+				}
+				else {
+					System.out.println("A quantidade de presidiários idosos é " + idosos + ".");
+				}
 				return true;
 				
 			case 8:
 				System.out.println();
 				String[] listaPresos = arvPS.ListaPresos();
 				
-				for (String x : listaPresos) {
-					System.out.println(x + ".\n");
+				if (listaPresos == null) {
+					System.out.println("Não existem presidiários no sistema!!!");
+				}
+				else {
+					for (String x : listaPresos) {
+						System.out.println(x + ".\n");
+					}
 				}
 				return true;
 				
 			case 9:
-				System.out.println("\nInforme o nome da cidade:");
+				System.out.print("\nInforme o nome da cidade: ");
 				cidadePR = scan.nextLine();
 				presidios = arvPR.CidadePresidio(cidadePR);
 				
 				for (String x : presidios) {
-					System.out.println(x + ".\n");
+					if (x != null) {
+						System.out.println(x + ".\n");
+					}
 				}
 				return true;
 				
@@ -175,26 +191,34 @@ public class MainSistema {
 				System.out.println("\nInforme o nível de segurança da cidade:");
 				System.out.println("OBS: MI para Mínima, MO para Moderada, MA para Máxima.");
 				nivelPR = scan.nextLine();
-				if (nivelPR == "MI") {
+				
+				switch (nivelPR) {
+				case "MI":
 					nivel = NivelSEG.MÍNIMA;
-				}
-				else if (nivelPR == "MO") {
+					break;
+				case "MO":
 					nivel = NivelSEG.MODERADA;
-				}
-				else if (nivelPR == "MA") {
+					break;
+				case "MA":
 					nivel = NivelSEG.MÁXIMA;
-				}
-				else {
+					break;
+				default:
 					System.out.println("Opção inválida, o programa retornará ao menu.");
 					return true;
 				}
 				
 				presidios = arvPR.PresidioNivel(nivel);
 				
-				for (String x : presidios) {
-					System.out.println(x + ".\n");
+				if (presidios == null) {
+					System.out.println("Não existem presídios com esse nível de segurança.");
 				}
-				
+				else {
+					for (String x : presidios) {
+						if (x != null) {
+							System.out.println("\n" + x + ".");
+						}
+					}
+				}
 				return true;
 				
 			default:

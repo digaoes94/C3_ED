@@ -176,54 +176,53 @@ public class ArvorePR {
 	}
 
 	public String[] CidadePresidio(String cidade) {
+		String[] presidios = new String[this.qtdNos];
+		int[] n = new int[1];
+		n[0] = 0;
+		
 		if (this.raiz == null) {
 			return null;
 		}
 		else {
-			String[] resultado = CidadePresidio(this.raiz, cidade);
-			return resultado;
+			return (CidadePresidio(this.raiz, presidios, n, cidade));
 		}
 	}
- 	private String[] CidadePresidio(NoPR no, String cidade) {
- 		String aux = "";
-    
+ 	private String[] CidadePresidio(NoPR no, String[] presidios, int[] n, String cidade) {
 		if (no != null) {
 			if (no.getItem().getCidade() == cidade) {
-				aux += no.getItem().getNome() + ",";
+				presidios[n[0]] = no.toString();
+				n[0]++;
    			}
-
-			aux += CidadePresidio(no.getEsq(), cidade);
-			aux += CidadePresidio(no.getDir(), cidade);
+			
+			presidios = CidadePresidio(no.getEsq(), presidios, n, cidade);
+			presidios = CidadePresidio(no.getDir(), presidios, n, cidade);
   		}
 		
-		String[] resultado = aux.split(",");
-
-    	return resultado;
+    	return presidios;
 	}
  	
  	public String[] PresidioNivel(NivelSEG nivel) {
+ 		String[] vetPR = new String[this.qtdNos];
+ 		int[] n = new int[1];
+ 		n[0] = 0;
+ 		
 		if (this.raiz == null) {
 			return null;
 		}
 		else {
-			String[] resultado = PresidioNivel(this.raiz, nivel);
-			return resultado;
+			return (PresidioNivel(this.raiz, vetPR, n, nivel));
 		}
 	}
- 	private String[] PresidioNivel(NoPR no, NivelSEG nivel) {
- 		String aux = "";
-    
+ 	private String[] PresidioNivel(NoPR no, String[] vetPR, int[] n, NivelSEG nivel) {
 		if (no != null) {
 			if (no.getItem().getNivel() == nivel) {
-				aux += no.getItem().getNome() + ",";
+				vetPR[n[0]] = no.getItem().getNome();
+				n[0]++;
    			}
 
-			aux += PresidioNivel(no.getEsq(), nivel);
-			aux += PresidioNivel(no.getDir(), nivel);
+			vetPR = PresidioNivel(no.getEsq(), vetPR, n, nivel);
+			vetPR = PresidioNivel(no.getDir(), vetPR, n, nivel);
   		}
-		
-		String[] resultado = aux.split(",");
-
-    	return resultado;
+    	return vetPR;
 	}
 }

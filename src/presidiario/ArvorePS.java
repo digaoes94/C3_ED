@@ -175,53 +175,53 @@ public class ArvorePS {
 	return vet;
 	}
 	
-	public int ContarIdosos() {
-		int idosos = 0;
+	public int[] ContarIdosos() {
+		int[] n = new int[1];
+		n[0] = 0;
 		
 		if (this.raiz == null) {
-			return -1;
+			n[0] = -1;
+			return n;
 		}
 		else {
-			idosos = ContarIdosos(this.raiz, idosos);
+			return (ContarIdosos(this.raiz, n));
 		}
-		
-		return idosos;
 	}
-	private int ContarIdosos(NoPS no, int idosos) {
+	private int[] ContarIdosos(NoPS no, int[] n) {
 		if (no != null) {
-			if (no.getItem().getIdade() >= 65) {
-				idosos++;
+			if (no.getItem().getIdade() > 64) {
+				n[0]++;
 			}
 			
-			idosos += ContarIdosos(no.getEsq(), idosos);
-			idosos += ContarIdosos(no.getDir(), idosos);
+			n = ContarIdosos(no.getEsq(), n);
+			n = ContarIdosos(no.getDir(), n);
 		}
 		
-		return idosos;
+		return n;
 	}
 	
 	public String[] ListaPresos() {
+		int[] n = new int[1];
+		n[0] = 0;
+		
 		String[] vetPS = new String[this.qtdNos];
-		String aux = "";
-		String aux2 = "";
 		
 		if (this.raiz == null) {
 			return null;
 		}
 		else {
-			aux = ListaPresos(this.raiz, aux2);
-			vetPS = aux.split(",");
-			return vetPS;
+			return (ListaPresos(this.raiz, vetPS, n));
 		}
 	}
-	private String ListaPresos(NoPS no, String aux2) {
+	private String[] ListaPresos(NoPS no, String[] vetPS, int[] n) {
 		if (no != null) {
-			aux2 += no.getItem().getNome() + ",";
+			vetPS[n[0]] = no.toString();
+			n[0]++;
 			
-			aux2 += ListaPresos(no.getEsq(), aux2);
-			aux2 += ListaPresos(no.getDir(), aux2);
+			vetPS = ListaPresos(no.getEsq(), vetPS, n);
+			vetPS = ListaPresos(no.getDir(), vetPS, n);
 		}
 		
-		return aux2;
+		return vetPS;
 	}
 }
