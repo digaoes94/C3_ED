@@ -36,7 +36,7 @@ public class NoPR {
 		String resumo = "";
 		
 		resumo += "Presídio: " + this.item.getNome() + ". Código: " + this.item.getCodigo() + ".\n";
-		resumo += "Cidade: " + this.item.getCidade() + ".";
+		resumo += "Nível de segurança: " + this.item.getNivel() + ". Cidade: " + this.item.getCidade() + ".";
 		
 		return resumo;
 	}

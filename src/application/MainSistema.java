@@ -114,14 +114,26 @@ public class MainSistema {
 				System.out.print("\nInforme o código do presidiário: ");
 				codigoPS = scan.nextInt();
 				noPS = arvPS.pesquisar(codigoPS);
-				System.out.println(noPS.toString());
+				
+				if (noPS != null) {
+					System.out.println(noPS.toString());
+				}
+				else {
+					System.out.println("O presidiário não foi encontrado.");
+				}
 				return true;
 				
 			case 4:
 				System.out.print("\nInforme o código do presídio: ");
 				codigoPR = scan.nextInt();
 				noPR = arvPR.pesquisar(codigoPR);
-				System.out.println(noPR.toString());
+				
+				if (noPR != null) {
+					System.out.println("\n" + noPR.toString());
+				}
+				else {
+					System.out.println("\nO presídio não foi encontrado.");
+				}
 				return true;
 				
 			case 5:
