@@ -55,6 +55,7 @@ public class MainSistema {
 		quebra = scan.nextLine();
 		
 		if (opcao == 11) {
+			System.out.println("O programa será encerrado.");
 			return false;
 		}
 		else {
