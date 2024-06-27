@@ -21,6 +21,7 @@ public class MainSistema {
 		ArvorePR arvPR = new ArvorePR();
 		
 		System.out.println("Sistema de Prisões Estaduais");
+		System.out.println("Desenvolvido por Anhangá TI (Kaio B. Linhares, Rikelme M. Biague e Rodrigo A. Schenberg)");
 		
 		do {
 			run = Menu(arvPS, arvPR);
