@@ -189,7 +189,7 @@ public class ArvorePR {
 	}
  	private String[] CidadePresidio(NoPR no, String[] presidios, int[] n, String cidade) {
 		if (no != null) {
-			if (no.getItem().getCidade() == cidade) {
+			if (cidade.equalsIgnoreCase(no.getItem().getCidade())) {
 				presidios[n[0]] = no.toString();
 				n[0]++;
    			}

@@ -190,8 +190,9 @@ public class MainSistema {
 				return true;
 				
 			case 9:
-				System.out.print("\nInforme o nome da cidade: ");
+				System.out.print("Informe o nome da cidade: ");
 				cidadePR = scan.nextLine();
+				System.out.println();
 				presidios = arvPR.CidadePresidio(cidadePR);
 				
 				for (String x : presidios) {
